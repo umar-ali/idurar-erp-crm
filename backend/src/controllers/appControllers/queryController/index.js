@@ -3,8 +3,11 @@ const methods = createCRUDController('Query');
 
 
 const create = require("./create");
+const {readOne, paginatedList} = require("./read")
 
 methods.create = create;
+methods.read = readOne;
+methods.list = paginatedList;
 
-module.exports = methods
+module.exports = methods;
 

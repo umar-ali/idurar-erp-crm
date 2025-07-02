@@ -2,6 +2,8 @@ const mongoose = require("mongoose")
 
 const Model = mongoose.model('Query');
 
+const schema = require('./schemaValidate');
+
 const create = async (req, res) => {
   let body = req.body;
   const { error, value } = schema.validate(body);

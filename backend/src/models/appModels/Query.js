@@ -31,4 +31,4 @@ const querySchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Query', querySchema)
+module.exports = mongoose.model('Query', querySchema);
