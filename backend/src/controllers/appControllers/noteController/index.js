@@ -38,6 +38,39 @@ const create = async (req, res) => {
   });
 };
 
+const remove = async (req, res) => {
+
+  const { id, noteId } = req.params
+
+  const isExist = await Model.exists({ "_id": noteId })
+
+  if (!previousPayment) {
+    return res.status(404).json({
+      success: false,
+      result: null,
+      message: 'No document found ',
+    });
+  }
+
+  const result = await Model.findByIdAndDelete({ "_id": noteId })
+  if (!result) {
+    return res.status(404).json({
+      success: false,
+      result: null,
+      message: 'No document found ',
+    });
+  }
+
+  return res.status(204).json({
+    success: true,
+    result: null,
+    message: "Deleted Document"
+  })
+};
+
+
+
 methods.create = create;
+methods.delete = remove;
 
 module.exports = methods;

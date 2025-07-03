@@ -18,7 +18,7 @@ const routerApp = (entity, controller) => {
     let parentEntity = 'queries';
     entity = "notes"
     router.route(`/${parentEntity}/:id/${entity}/`).post(catchErrors(controller['create']));
-    router.route(`/${parentEntity}/:id/${entity}/noteId`).delete(catchErrors(controller['delete'])); //TODO: implement
+    router.route(`/${parentEntity}/:id/${entity}/noteId`).delete(catchErrors(controller['delete']));
     return
   } 
   router.route(`/${entity}/create`).post(catchErrors(controller['create']));
