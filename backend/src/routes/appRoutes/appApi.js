@@ -10,7 +10,7 @@ const routerApp = (entity, controller) => {
   if(entity === 'query'){
     entity = 'queries'; // To align with specs
     router.route(`/${entity}/`).post(catchErrors(controller['create']));
-    router.route(`/${entity}/:id`).put(catchErrors(controller['update'])); //TODO: implement
+    router.route(`/${entity}/:id`).put(catchErrors(controller['update'])); 
     router.route(`/${entity}/:id`).get(catchErrors(controller['read']));
     router.route(`/${entity}/`).get(catchErrors(controller['list']));
     return
