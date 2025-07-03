@@ -3,7 +3,7 @@ const mongoose = require("mongoose")
 const Model = mongoose.model('Query');
 const clientModel = mongoose.model('Client');
 
-const schema = require('./schemaValidate');
+const { schema } = require('./schemaValidate');
 
 const create = async (req, res) => {
   let body = req.body;
