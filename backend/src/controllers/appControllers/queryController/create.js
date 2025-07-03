@@ -26,7 +26,7 @@ const create = async (req, res) => {
     });
   }
   const result = await new Model(body).save();
-  return res.status(200).json({
+  return res.status(201).json({
     success: true,
     result: result,
     message: "Query Posted Successfully"

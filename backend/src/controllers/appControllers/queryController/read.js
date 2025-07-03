@@ -32,7 +32,7 @@ const paginatedList = async (req, res) => {
     const startIdx = (page - 1) * limit;
     const total = await Query.countDocuments();
 
-    const result = Model.find()
+    const result = Model.find({}, {notes:-1})
         .skip(startIdx)
         .limit(limit)
         .populate("customer", "name")

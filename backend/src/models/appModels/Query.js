@@ -1,6 +1,22 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
+const noteSchema = new Schema({
+    author: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Admin",
+        required: true
+    },
+    content: {
+        type: String,
+        required: true
+    },
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
+});
+
 const querySchema = new Schema({
     customer: {
         type: mongoose.Schema.Types.ObjectId,
@@ -16,6 +32,10 @@ const querySchema = new Schema({
         type: Date,
         default: Date.now
     },
+    updatedAt: {
+        type: Date,
+        default: Date.now
+    },
     status: {
         type: String,
         enum: ['Open', 'InProgress', 'Closed'],
@@ -24,10 +44,11 @@ const querySchema = new Schema({
     resolution: {
         type: String,
         trim: true,
-        maxlength: 1000 
-    }
+        maxlength: 1000
+    },
+    notes: [noteSchema]
 }, {
-    timestamps: true 
+    timestamps: true
 });
 
 

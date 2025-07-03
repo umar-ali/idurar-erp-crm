@@ -10,6 +10,8 @@ const update = async (req, res) => {
             updates[key] = req.body[key];
         }
     }
+    
+    updates["updatedAt"] = Date.now()
 
     const result = await Model.findOneAndUpdate({ _id: req.params.id }, { "$set": updates })
 

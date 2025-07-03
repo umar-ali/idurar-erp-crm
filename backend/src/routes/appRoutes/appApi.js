@@ -13,12 +13,9 @@ const routerApp = (entity, controller) => {
     router.route(`/${entity}/:id`).put(catchErrors(controller['update'])); 
     router.route(`/${entity}/:id`).get(catchErrors(controller['read']));
     router.route(`/${entity}/`).get(catchErrors(controller['list']));
-    return
-  }else if(entity === "note"){
-    let parentEntity = 'queries';
-    entity = "notes"
-    router.route(`/${parentEntity}/:id/${entity}/`).post(catchErrors(controller['create']));
-    router.route(`/${parentEntity}/:id/${entity}/noteId`).delete(catchErrors(controller['delete']));
+    const subEntity = "notes";
+    router.route(`/${entity}/:id/${subEntity}/`).post(catchErrors(controller['createNote']));
+    router.route(`/${entity}/:id/${subEntity}/noteId`).delete(catchErrors(controller['deleteNote']));
     return
   } 
   router.route(`/${entity}/create`).post(catchErrors(controller['create']));
