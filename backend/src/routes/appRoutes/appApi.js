@@ -6,6 +6,21 @@ const appControllers = require('@/controllers/appControllers');
 const { routesList } = require('@/models/utils');
 
 const routerApp = (entity, controller) => {
+  //Adding Query Endpoints
+  if(entity === 'query'){
+    entity = 'queries'; // To align with specs
+    router.route(`/${entity}/`).post(catchErrors(controller['create']));
+    router.route(`/${entity}/:id`).put(catchErrors(controller['update'])); //TODO: implement
+    router.route(`/${entity}/:id`).get(catchErrors(controller['read']));
+    router.route(`/${entity}/`).get(catchErrors(controller['list']));
+    return
+  }else if(entity === "note"){
+    let parentEntity = 'queries';
+    entity = "notes"
+    router.route(`/${parentEntity}/:id/${entity}/`).post(catchErrors(controller['create']));
+    router.route(`/${parentEntity}/:id/${entity}/noteId`).delete(catchErrors(controller['delete'])); //TODO: implement
+    return
+  } 
   router.route(`/${entity}/create`).post(catchErrors(controller['create']));
   router.route(`/${entity}/read/:id`).get(catchErrors(controller['read']));
   router.route(`/${entity}/update/:id`).patch(catchErrors(controller['update']));
