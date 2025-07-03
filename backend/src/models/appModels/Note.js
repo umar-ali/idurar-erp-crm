@@ -9,7 +9,7 @@ const noteSchema = new Schema({
     },
     author: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Client",
+        ref: "Admin",
         required: true
     },
     content: {
