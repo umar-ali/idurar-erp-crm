@@ -123,6 +123,19 @@ let routes = {
       path: '/profile',
       element: <Profile />,
     },
+    //routes for query
+    {
+      path:'/queries',
+      element: <NotFound />,
+    },
+    {
+      path:'/query/:id',
+      element: <NotFound />,
+    },
+    {
+      path:'/query/:id/notes/:noteId',
+      element: <NotFound />,
+    },
     {
       path: '*',
       element: <NotFound />,

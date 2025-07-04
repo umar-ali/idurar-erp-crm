@@ -24,6 +24,7 @@ import {
   FileOutlined,
   ShopOutlined,
   FilterOutlined,
+  QuestionOutlined,
   WalletOutlined,
   ReconciliationOutlined,
 } from '@ant-design/icons';
@@ -85,6 +86,11 @@ function Sidebar({ collapsible, isMobile = false }) {
       key: 'taxes',
       label: <Link to={'/taxes'}>{translate('taxes')}</Link>,
       icon: <ShopOutlined />,
+    },
+    {
+      key: 'queries',
+      label: <Link to={'/queries'}>{translate('queries')}</Link>,
+      icon: <QuestionOutlined />,
     },
     {
       key: 'generalSettings',
